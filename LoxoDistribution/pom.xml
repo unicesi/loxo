@@ -1,0 +1,121 @@
+<!-- 
+ Copyright © 2015 Universidad Icesi
+ 
+ This file is part of Loxo.
+ 
+ Loxo is free software: you can redistribute it 
+ and/or modify it under the terms of the GNU Lesser General 
+ Public License as published by the Free Software 
+ Foundation, either version 3 of the License, or (at your 
+ option) any later version.
+ 
+ Loxo is distributed in the hope that it will be 
+ useful, but WITHOUT ANY WARRANTY; without even the implied 
+ warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+ PURPOSE. See the GNU Lesser General Public License for 
+ more details.
+ 
+ You should have received a copy of the GNU Lesser General 
+ Public License along with Loxo. If not, 
+ see <http://www.gnu.org/licenses/>.
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>co.edu.icesi.i2t.loxo</groupId>
+		<artifactId>Loxo</artifactId>
+		<version>1.0</version>
+		<relativePath>../Loxo/pom.xml</relativePath>
+	</parent>
+	<artifactId>LoxoDistribution</artifactId>
+	<packaging>pom</packaging>
+
+	<name>Loxo Distribution</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>co.edu.icesi.i2t.loxo</groupId>
+			<artifactId>LoxoConfig</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>co.edu.icesi.i2t.loxo</groupId>
+			<artifactId>LoxoRobot</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>co.edu.icesi.i2t.loxo</groupId>
+			<artifactId>LoxoBib</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.44.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>*.xml</exclude>
+					<exclude>*.dist</exclude>
+					<exclude>*.txt</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>distribution</id>
+						<phase>package</phase>
+						<goals>
+							<goal>directory</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>src/main/assembly/distribution.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/LoxoDistribution-1.0-distribution</outputDirectory>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${basedir}/src/main/resources</directory>
+									<includes>
+										<include>LoxoConfig.xml</include>
+										<include>README.txt</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

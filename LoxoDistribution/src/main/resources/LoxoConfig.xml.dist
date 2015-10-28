@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<slr>
+    <!-- If the databases tag is not present, all databases will be used. -->
+    <databases>
+        <database>ScienceDirect</database>
+        <database>IEEEXplore</database>
+        <database>SpringerLink</database>
+        <database>ACM</database>
+    </databases>
+    <inclusioncriteria>
+        <years>
+            <from></from>
+            <to></to>
+	</years>
+    </inclusioncriteria>
+    <exclusioncriteria>
+        <string></string>
+    </exclusioncriteria>
+    <searchstrings>
+        <domainstrings>
+            <string></string>
+        </domainstrings>
+        <focusedstrings>
+            <string></string>
+        </focusedstrings>
+    </searchstrings>
+</slr>

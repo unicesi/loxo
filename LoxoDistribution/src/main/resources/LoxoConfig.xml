@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<slr>
+    <exclusioncriteria>
+        <string></string>
+    </exclusioncriteria>
+    <searchstrings>
+        <domainstrings>
+            <string>software process line*</string>
+        </domainstrings>
+        <focusedstrings>
+            <string></string>
+        </focusedstrings>
+    </searchstrings>
+</slr>
